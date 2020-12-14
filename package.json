@@ -7,9 +7,11 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "cra-template": "1.1.1",
+    "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "socket.io": "^3.0.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
