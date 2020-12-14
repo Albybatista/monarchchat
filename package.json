@@ -8,10 +8,14 @@
     "@testing-library/user-event": "^12.6.0",
     "cra-template": "1.1.1",
     "express": "^4.17.1",
+    "mongoose": "^5.11.7",
+    "morgan": "^1.10.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "serve-favicon": "^2.5.0",
     "socket.io": "^3.0.4",
+    "socket.io-client": "^3.0.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
