@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "cookie-parser": "^1.4.5",
     "cra-template": "1.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -14,16 +15,16 @@
     "mongoose": "^5.11.7",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "serve-favicon": "^2.5.0",
-<<<<<<< HEAD
-    "socket.io": "^2.3.0",
-=======
     "socket.io": "^3.0.4",
->>>>>>> 13822ff93b68c197abeb82b0dc230066da3098fd
     "socket.io-client": "^3.0.4",
     "web-vitals": "^0.2.4"
   },
