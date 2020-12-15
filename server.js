@@ -1,13 +1,13 @@
-// require('dotenv').config(); // FIXME: not using this for now
+require('dotenv').config(); // FIXME: not using this for now
 require('./config/database');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const path = require('path');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const cors = require('cors');
 const logger = require('morgan');
 const app = express(); // express instantiated for handling routes
-const port = process.env.PORT || 3001;
+const port = 3001;
 const http = require('http').createServer(app); // http calls required for request & response
 const io = require('socket.io')(http, { // v3.x of socket.io requires cors settings for connection to be established
   cors: {
@@ -35,9 +35,9 @@ const profileRouter = require('./routes/profile');
 
 // require('dotenv').config();
 
-const app = express();
-const port = process.env.PORT || 3001;
-const cors = require('cors');
+// const app = express();
+// const port = process.env.PORT || 3001;
+// const cors = require('cors');
 
 require('./config/database');
 require('./config/passport');
@@ -63,10 +63,12 @@ app.use((req, res, next) => {
 // app.get('/', function(req, res) {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 // });
+
+
 app.use(cors());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'build')));
-app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
