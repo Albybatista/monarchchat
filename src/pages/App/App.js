@@ -68,27 +68,6 @@ function App() {
   })
   }, [state, chat])
 
-  const onTextChange = e => {
-  setState({ ...state, [e.target.name]: e.target.value })
-  }
-  
-  const onMessageSubmit = e => {
-  e.preventDefault()
-  const { name, message } = state
-  socket.emit('message', { name, message })
-  setState({ message: '', name })
-  }
-
-  const renderChat = () => {
-      return chat.map(({ name, message }, index) => (
-      <div key={index}>
-          <h3>
-          {name}: <span>{message}</span>
-          </h3>
-      </div>
-      ))
-  }
-
   return (
     <>
     <div className="parent">
