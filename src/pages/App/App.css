@@ -1,4 +1,8 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+  font-family: 'Roboto', sans-serif;
+}
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +39,129 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.parent {
+  border-bottom: 5px solid black;
+  max-width: 100%;
+}
+
+nav {
+  /* background-color: purple; */
+  height: 100%;
+}
+
+form {
+  /* background-color: purple; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* border-radius: 5px; */
+  /* box-shadow: 0px 3px 24px -8px rgba(0, 0, 0, 0.75); */
+}
+
+.render-chat {
+  position: relative;
+  right: 0;
+  width: 100%;
+  height: 80%;
+  /* border-radius: 5px; */
+  /* padding: 20px; */
+  box-shadow: 0px 3px 24px -8px rgba(0, 0, 0, 0.75);
+}
+
+h1 {
+  margin: 0;
+  border-bottom: 2px solid black;
+  /* padding-top: 5px; */
+  padding-left: 10px;
+  /* padding-bottom: 5px; */
+  height: 53px;
+  line-height: 53px;
+}
+
+h3 {
+  padding-left: 5px;
+  font-size: 1em;
+  color: #2f72da;
+}
+
+span {
+  color: black;
+}
+
+/* CUSTOM */
+.parent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.one {
+  border: 2px solid red;
+  
+}
+.two {
+  border: 2px solid red;
+}
+.three {
+  border: 2px solid red;
+}
+
+
+.card {
+  /* background-color: hotpink; */
+  /* border: 5px solid green; */
+  /* display: grid; */
+  grid-template-columns: 1fr 1fr;
+  min-height: 30rem;
+  width: 100%;
+}
+
+.name-field {
+  position: relative;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.nameBox {
+  /* background-color: limegreen; */
+  /* position: absolute; */
+  right: 0;
+  width: 100%;
+}
+
+.message-field {
+  /* background-color: yellow; */
+  width: 100%;
+  position: relative;
+  right: 0;
+  margin-top: 5px;
+}
+
+.messageBox {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #C4C4C4;
+  right: 0;
+}
+
+button {
+  position: absolute;
+  padding: 10px;
+  background: transparent;
+  border-radius: 5px;
+  right: 0;
+  margin: 5px;
+}
+
+span {
+  color: black;
+}
+
+footer {
+  /* background-color: blue; */
+  text-align: center;
+  width: 100%;
 }

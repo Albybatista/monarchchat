@@ -10,36 +10,14 @@ const socket = io.connect('http://localhost:3001', {
 })
 
 function ChatPage(props) {
-  // chat box functions
   const [state, setState] = useState({ message: '', name: '' })
   const [chat, setChat] = useState([])
-
+  console.log(props);
   useEffect(() => {
   socket.on('message', ({ name, message }) => {
       setChat([...chat, { name, message }])
   })
   }, [state, chat])
-
-  const onTextChange = e => {
-  setState({ ...state, [e.target.name]: e.target.value })
-  }
-  
-  const onMessageSubmit = e => {
-  e.preventDefault()
-  const { name, message } = state
-  socket.emit('message', { name, message })
-  setState({ message: '', name })
-  }
-
-  const renderChat = () => {
-      return chat.map(({ name, message }, index) => (
-      <div key={index}>
-          <h3>
-          {name}: <span>{message}</span>
-          </h3>
-      </div>
-      ))
-  }
 
   return (
     <div>
@@ -49,7 +27,7 @@ function ChatPage(props) {
           <div className="name-field">
             <TextField
             name="name"
-            onTextChange={props.onTextChange}
+            onChange={props.onTextChange}
             value={state.name}
             label="Name"
             />
@@ -57,7 +35,7 @@ function ChatPage(props) {
           <div>
             <TextField
             name="message"
-            onTextChange={props.onTextChange}
+            onChange={props.onTextChange}
             value={state.message}
             id="outlined-multiline-static"
             variant="outlined"
