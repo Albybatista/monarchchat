@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import TextField from '@material-ui/core/TextField'
 import io from 'socket.io-client'
-import ReactDOM, { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
 import ProfilePage from '../ProfilePage/ProfilePage'
 import HomePage from '../HomePage/HomePage'
-import GoogleLogin from 'react-google-login';
+// import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 // import ChatPage from '../ChatPage/ChatPage'
 
@@ -50,17 +50,17 @@ function App() {
   }
   
   // google auth stuff
-  const responseSuccessGoogle = (response) => {
-    console.log(response);
-    axios({
-      method: "POST",
-      url: "http://localhost:3000/",
-      data: {}
-    })
-  }
+//   const responseSuccessGoogle = (response) => {
+//     console.log(response);
+//     axios({
+//       method: "POST",
+//       url: "http://localhost:3000/",
+//       data: {}
+//     })
+//   }
   
-  const responseErrorGoogle = (response) => {
-  }
+//   const responseErrorGoogle = (response) => {
+//   }
 
   useEffect(() => {
   socket.on('message', ({ name, message }) => {
