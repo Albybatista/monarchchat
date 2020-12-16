@@ -62,12 +62,6 @@ function App() {
   const responseErrorGoogle = (response) => {
   }
 
-
-
-  // chat box functions
-  const [state, setState] = useState({ message: '', name: '' })
-  const [chat, setChat] = useState([])
-
   useEffect(() => {
   socket.on('message', ({ name, message }) => {
       setChat([...chat, { name, message }])
