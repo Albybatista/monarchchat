@@ -26,17 +26,6 @@ const NavBar = () => {
 
     //     </div>
 
-
-        <div className="Nav">
-
-            <NavLink className="link" exact to='/' >Home</NavLink>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link className="link" exact to='/profile' >Profile</Link>
-
-        </div>
-
-
-
     return (
         <div className='NavBar'>
             {nav}
