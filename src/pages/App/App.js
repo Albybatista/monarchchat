@@ -6,7 +6,9 @@ import { Route, Switch } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
 import ProfilePage from '../ProfilePage/ProfilePage'
 import HomePage from '../HomePage/HomePage'
-
+// import GoogleLogin from 'react-google-login';
+// import axios from 'axios';
+// import ChatPage from '../ChatPage/ChatPage'
 
 const socket = io.connect('http://localhost:3001', {
     withCredentials: true,
@@ -16,6 +18,7 @@ const socket = io.connect('http://localhost:3001', {
 })
 
 function App() {
+  // chat box functions
   const [state, setState] = useState({ message: '', name: '' })
   const [chat, setChat] = useState([])
 
@@ -46,8 +49,32 @@ function App() {
       ))
   }
   
+  // google auth stuff
+//   const responseSuccessGoogle = (response) => {
+//     console.log(response);
+//     axios({
+//       method: "POST",
+//       url: "http://localhost:3000/",
+//       data: {}
+//     })
+//   }
+  
+//   const responseErrorGoogle = (response) => {
+//   }
+
+  useEffect(() => {
+  socket.on('message', ({ name, message }) => {
+      setChat([...chat, { name, message }])
+  })
+  }, [state, chat])
+
   return (
     <>
+    <div className="parent">
+      {/* <div className="one">one</div>
+      <div className="two">two</div>
+      <div className="three">three</div> */}
+    
       <header>
         <nav>
           <NavBar />
@@ -57,40 +84,60 @@ function App() {
       <Switch>
         <Route exact path='/' render={() => <><HomePage /> </>} />
         <Route exact path='/profile' render={() => <ProfilePage />} />
+        {/* <Route 
+          exact path='/chat' 
+          render={(props) => <ChatPage 
+            {...props}
+            component={ChatPage} 
+            onTextChange={e => onTextChange(e)} 
+            onMessageSubmit={e => onMessageSubmit(e)} 
+            renderChat={renderChat} />} 
+        /> */}
+            onChange={(e) => onTextChange(e)} 
+            messageSubmit={(e) => onMessageSubmit(e)} 
+            chatRender={renderChat} />} 
+        />
       </Switch>
 
       <div className="card">
         <form onSubmit={onMessageSubmit}>
-          <h1>Messenger</h1>
-          <div className="name-field">
-            <TextField
-            name="name"
-            onChange={e => onTextChange(e)}
-            value={state.name}
-            label="Name"
-            />
-          </div>
-          <div>
-            <TextField
-            name="message"
-            onChange={e => onTextChange(e)}
-            value={state.message}
-            id="outlined-multiline-static"
-            variant="outlined"
-            label="Message"
-            />
-          </div>
-          <button>Send Message</button>
-          <div className="render-chat">
-            <h1>Chat Log</h1>
+        <div className="render-chat">
+            <h1>Chill Vibez</h1>
             {renderChat()}
           </div>
+          
+
+          <div className="name-field">
+            <TextField
+              className="nameBox"
+              name="name"
+              onChange={e => onTextChange(e)}
+              value={state.name}
+              label="Name"
+            />
+          </div>
+
+
+          <div className="message-field">
+            <TextField
+              className="messageBox"
+              name="message"
+              onChange={e => onTextChange(e)}
+              value={state.message}
+              id="outlined-multiline-static"
+              variant="outlined"
+              label="Message"
+              />
+              <button>Send Message</button>
+          </div>
+
+
         </form>
+      </div>
       </div>
 
       <footer>
-        &nbsp;
-        <h5>App coded in <span>React</span> by <span>Tech Monarchs</span> </h5>
+        <p>App coded in React by Tech Monarchs</p>
       </footer>
     </>
   );

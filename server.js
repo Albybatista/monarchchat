@@ -11,7 +11,7 @@ const port = 3001;
 const http = require('http').createServer(app); // http calls required for request & response
 const io = require('socket.io')(http, { // v3.x of socket.io requires cors settings for connection to be established
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chatturfly.netlify.app/",
     methods: ["GET", "POST"],
     allowedHeaders: ['my-custom-header'],
     credentials: true
