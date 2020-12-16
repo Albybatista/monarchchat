@@ -9,17 +9,8 @@ const socket = io.connect('http://localhost:3001', {
     }
 })
 
-
-function ChatPage(props) {
-  const [state, setState] = useState({ message: '', name: '' })
-  const [chat, setChat] = useState([])
-  console.log(props);
-  useEffect(() => {
-  socket.on('message', ({ name, message }) => {
-      setChat([...chat, { name, message }])
-  })
-  }, [state, chat])
-
+const ChatPage = (props) => {
+  
 
   return (
     <div>
