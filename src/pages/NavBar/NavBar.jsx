@@ -5,17 +5,14 @@ import './NavBar.css';
 
 const NavBar = () => {
     let nav =
-
-
         <div className="Nav">
-
             <NavLink className="link" exact to='/' >Home</NavLink>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <NavLink className="link" exact to='/profile' >Profile</NavLink>
+            &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <NavLink className="link" exact to='/profile' >Profile</NavLink>
+            &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <NavLink className="link" exact to='/chat' >Chat</NavLink>
 
         </div>
-
-
     return (
         <div className='NavBar'>
             {nav}

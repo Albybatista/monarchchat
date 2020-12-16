@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import io from 'socket.io-client';
 import TextField from '@material-ui/core/TextField'
-import io from 'socket.io-client'
-import ReactDOM, { Route, Switch } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar'
-import ProfilePage from '../ProfilePage/ProfilePage'
-import HomePage from '../HomePage/HomePage'
-import GoogleLogin from 'react-google-login';
-import axios from 'axios';
-import ChatPage from '../ChatPage/ChatPage'
 
 const socket = io.connect('http://localhost:3001', {
     withCredentials: true,
@@ -17,7 +9,7 @@ const socket = io.connect('http://localhost:3001', {
     }
 })
 
-function App() {
+function ChatPage(props) {
   // chat box functions
   const [state, setState] = useState({ message: '', name: '' })
   const [chat, setChat] = useState([])
@@ -48,50 +40,16 @@ function App() {
       </div>
       ))
   }
-  
-  // google auth stuff
-  const responseSuccessGoogle = (response) => {
-    console.log(response);
-    axios({
-      method: "POST",
-      url: "http://localhost:3000/",
-      data: {}
-    })
-  }
-  
-  const responseErrorGoogle = (response) => {
-  }
-
 
   return (
-    <>
-      <header>
-        <nav>
-          <NavBar />
-        </nav>
-      </header>
-
-      <Switch>
-        <Route exact path='/' render={() => <><HomePage /> </>} />
-        <Route exact path='/profile' render={() => <ProfilePage />} />
-        <Route 
-          exact path='/chat' 
-          render={(props) => <ChatPage 
-            {...props}
-            component={ChatPage} 
-            onTextChange={e => onTextChange(e)} 
-            onMessageSubmit={e => onMessageSubmit(e)} 
-            renderChat={renderChat} />} 
-        />
-      </Switch>
-
-      {/* <div className="card">
-        <form onSubmit={onMessageSubmit}>
+    <div>
+      <div className="card">
+        <form onSubmit={props.onMessageSubmit}>
           <h1>Messenger</h1>
           <div className="name-field">
             <TextField
             name="name"
-            onChange={e => onTextChange(e)}
+            onTextChange={props.onTextChange}
             value={state.name}
             label="Name"
             />
@@ -99,7 +57,7 @@ function App() {
           <div>
             <TextField
             name="message"
-            onChange={e => onTextChange(e)}
+            onTextChange={props.onTextChange}
             value={state.message}
             id="outlined-multiline-static"
             variant="outlined"
@@ -109,19 +67,12 @@ function App() {
           <button>Send Message</button>
           <div className="render-chat">
             <h1>Chat Log</h1>
-            {renderChat()}
+            {props.renderChat}
           </div>
         </form>
-      </div> */}
-
-      <footer>
-        &nbsp;
-        <h5>App coded in <span>React</span> by <span>Tech Monarchs</span> </h5>
-      </footer>
-    </>
-  );
+      </div>
+    </div>
+  )
 }
 
-export default App;
-
-
+export default ChatPage;
