@@ -17,7 +17,7 @@ This app was developed using React, Express, Node, MongoDB, GoogleAuth, and Sock
 
 ## Getting Started
 
-[Chatturfly](https://chatturfly.netlify.app/) - link to App.
+[Chatturfly]() - link to App.
 
 ## Next Steps:
 
