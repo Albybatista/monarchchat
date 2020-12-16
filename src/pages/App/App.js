@@ -7,7 +7,7 @@ import NavBar from '../NavBar/NavBar'
 import ProfilePage from '../ProfilePage/ProfilePage'
 import HomePage from '../HomePage/HomePage'
 // import GoogleLogin from 'react-google-login';
-import axios from 'axios';
+// import axios from 'axios';
 // import ChatPage from '../ChatPage/ChatPage'
 
 const socket = io.connect('http://localhost:3001', {
