@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import TextField from '@material-ui/core/TextField'
 import io from 'socket.io-client'
-import { Route, Switch } from 'react-router-dom';
+import ReactDOM, { Route, Switch } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
 import ProfilePage from '../ProfilePage/ProfilePage'
 import HomePage from '../HomePage/HomePage'
-
+import GoogleLogin from 'react-google-login';
+import axios from 'axios';
+import ChatPage from '../ChatPage/ChatPage'
 
 const socket = io.connect('http://localhost:3001', {
     withCredentials: true,
@@ -16,6 +18,7 @@ const socket = io.connect('http://localhost:3001', {
 })
 
 function App() {
+  // chat box functions
   const [state, setState] = useState({ message: '', name: '' })
   const [chat, setChat] = useState([])
 
@@ -46,6 +49,52 @@ function App() {
       ))
   }
   
+  // google auth stuff
+  const responseSuccessGoogle = (response) => {
+    console.log(response);
+    axios({
+      method: "POST",
+      url: "http://localhost:3000/",
+      data: {}
+    })
+  }
+  
+  const responseErrorGoogle = (response) => {
+  }
+
+
+
+  // chat box functions
+  const [state, setState] = useState({ message: '', name: '' })
+  const [chat, setChat] = useState([])
+
+  useEffect(() => {
+  socket.on('message', ({ name, message }) => {
+      setChat([...chat, { name, message }])
+  })
+  }, [state, chat])
+
+  const onTextChange = e => {
+  setState({ ...state, [e.target.name]: e.target.value })
+  }
+  
+  const onMessageSubmit = e => {
+  e.preventDefault()
+  const { name, message } = state
+  socket.emit('message', { name, message })
+  setState({ message: '', name })
+  }
+
+  const renderChat = () => {
+      return chat.map(({ name, message }, index) => (
+      <div key={index}>
+          <h3>
+          {name}: <span>{message}</span>
+          </h3>
+      </div>
+      ))
+  }
+
   return (
     <>
       <header>
@@ -57,9 +106,18 @@ function App() {
       <Switch>
         <Route exact path='/' render={() => <><HomePage /> </>} />
         <Route exact path='/profile' render={() => <ProfilePage />} />
+        <Route 
+          exact path='/chat' 
+          render={(props) => <ChatPage 
+            {...props}
+            component={ChatPage} 
+            onChange={(e) => onTextChange(e)} 
+            messageSubmit={(e) => onMessageSubmit(e)} 
+            chatRender={renderChat} />} 
+        />
       </Switch>
 
-      <div className="card">
+      {/* <div className="card">
         <form onSubmit={onMessageSubmit}>
           <h1>Messenger</h1>
           <div className="name-field">
@@ -86,7 +144,7 @@ function App() {
             {renderChat()}
           </div>
         </form>
-      </div>
+      </div> */}
 
       <footer>
         &nbsp;
