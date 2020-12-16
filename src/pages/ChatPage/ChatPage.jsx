@@ -9,6 +9,7 @@ const socket = io.connect('http://localhost:3001', {
     }
 })
 
+
 function ChatPage(props) {
   const [state, setState] = useState({ message: '', name: '' })
   const [chat, setChat] = useState([])
@@ -19,10 +20,11 @@ function ChatPage(props) {
   })
   }, [state, chat])
 
+
   return (
     <div>
       <div className="card">
-        <form onSubmit={props.onMessageSubmit}>
+        <form onSubmit={props.messageSubmit}>
           <h1>Messenger</h1>
           <div className="name-field">
             <TextField
@@ -45,7 +47,7 @@ function ChatPage(props) {
           <button>Send Message</button>
           <div className="render-chat">
             <h1>Chat Log</h1>
-            {props.renderChat}
+            {props.chatRender}
           </div>
         </form>
       </div>
