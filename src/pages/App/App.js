@@ -8,7 +8,7 @@ import ProfilePage from '../ProfilePage/ProfilePage'
 import HomePage from '../HomePage/HomePage'
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
-// import ChatPage from '../ChatPage/ChatPage'
+import ChatPage from '../ChatPage/ChatPage'
 
 const socket = io.connect('http://localhost:3001', {
     withCredentials: true,
@@ -97,11 +97,6 @@ function App() {
 
   return (
     <>
-    <div className="parent">
-      {/* <div className="one">one</div>
-      <div className="two">two</div>
-      <div className="three">three</div> */}
-    
       <header>
         <nav>
           <NavBar />
@@ -111,60 +106,49 @@ function App() {
       <Switch>
         <Route exact path='/' render={() => <><HomePage /> </>} />
         <Route exact path='/profile' render={() => <ProfilePage />} />
-        {/* <Route 
+        <Route 
           exact path='/chat' 
           render={(props) => <ChatPage 
             {...props}
             component={ChatPage} 
-            onTextChange={e => onTextChange(e)} 
-            onMessageSubmit={e => onMessageSubmit(e)} 
-            renderChat={renderChat} />} 
-        /> */}
             onChange={(e) => onTextChange(e)} 
             messageSubmit={(e) => onMessageSubmit(e)} 
             chatRender={renderChat} />} 
         />
       </Switch>
 
-      <div className="card">
+      {/* <div className="card">
         <form onSubmit={onMessageSubmit}>
-        <div className="render-chat">
-            <h1>Chill Vibez</h1>
-            {renderChat()}
-          </div>
-          
-
+          <h1>Messenger</h1>
           <div className="name-field">
             <TextField
-              className="nameBox"
-              name="name"
-              onChange={e => onTextChange(e)}
-              value={state.name}
-              label="Name"
+            name="name"
+            onChange={e => onTextChange(e)}
+            value={state.name}
+            label="Name"
             />
           </div>
-
-
-          <div className="message-field">
+          <div>
             <TextField
-              className="messageBox"
-              name="message"
-              onChange={e => onTextChange(e)}
-              value={state.message}
-              id="outlined-multiline-static"
-              variant="outlined"
-              label="Message"
-              />
-              <button>Send Message</button>
+            name="message"
+            onChange={e => onTextChange(e)}
+            value={state.message}
+            id="outlined-multiline-static"
+            variant="outlined"
+            label="Message"
+            />
           </div>
-
-
+          <button>Send Message</button>
+          <div className="render-chat">
+            <h1>Chat Log</h1>
+            {renderChat()}
+          </div>
         </form>
-      </div>
-      </div>
+      </div> */}
 
       <footer>
-        <p>App coded in React by Tech Monarchs</p>
+        &nbsp;
+        <h5>App coded in <span>React</span> by <span>Tech Monarchs</span> </h5>
       </footer>
     </>
   );
