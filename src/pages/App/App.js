@@ -40,14 +40,27 @@ function App() {
   }
 
   const renderChat = () => {
-      return chat.map(({ name, message }, index) => (
-      <div key={index}>
+    let counter = 0;
+    let arr = chat.map(({ name, message }, index) => (
+      <div className="even" key={index}>
           <h3>
           {name}: <span>{message}</span>
           </h3>
       </div>
-      ))
+    ))
+    console.log(arr)
+    return arr;
   }
+
+  // const renderChat = () => {
+  //   return chat.map(({ name, message }, index) => (
+  //   <div key={index}>
+  //       <h3>
+  //       {name}: <span>{message}</span>
+  //       </h3>
+  //   </div>
+  //   ))
+  // }
   
   // google auth stuff
 //   const responseSuccessGoogle = (response) => {
